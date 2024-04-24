@@ -1,0 +1,3 @@
+// Encapsulation means hiding the properties and information of any class so that on one can change the infomation of the class from outside the class as one can easily change the values of any field of the class form outside as <Object>.<field_name>= <new value> and that field's value got chaanged. 
+
+// To avoid it, we make that property with "var" keyword and hide it within any function. if you want to get that property, you have to invoke the function.
