@@ -1,0 +1,5 @@
+// Prototype is an object itself which will be created and linked with any object if that object has been made. But this thing happens only when we declare and initialize any object manually. This prototype object contains some functions and methods which you can use with object without declaring of your own.
+
+// When we create an object using construction function, then we get the real prototype object inside of another prototype prototype object. Well this upper or fake prototype or upper prototype object has been given to us. We can add some methods into this fake and use them with the object and the real protytype object contains all the same functions and methods described above.
+
+// So in the second paragraph, these fake and real protytype objects are linked to each other with chains and this process is called "Prototype Chaining".
