@@ -7,9 +7,18 @@ console.log("This is the first line")
 fm.readFile('File.txt', (err, data)=>{
     if(err){
         console.log("Data can't be able to retrieve successfully")
+    }else{
+        console.log(data.toString('utf8'))
     }
-    console.log(data.toString('utf8'))
     // if you only write "console.log(data.toString('utf8'))" if will produce buffer instead of desired data so you have to convert it into utf8 encoding to get the output.
+})
+
+fm.readFile('File2.txt', (err, data)=>{
+    if(err){
+        console.log("File2 data has not been executed successfully")
+    }else{
+        console.log(data.toString('utf8'))
+    }
 })
 
 console.log("This is second line")
