@@ -37,3 +37,5 @@ console.log(obj2) // Here change will reflect in both of the objects as they are
 
 
 // Note:- Primitive Datatypes stores in Stack Memory while Reference datatypes stores in Heap memory.
+
+// For Primitives, we actually stores the value in Stack while for reference datatypes we store their pointer in stack which actually points to the object in heap. // Imp point.
