@@ -2,6 +2,8 @@
 
 const prompt = require('prompt-sync')({sigint: true});
 
+let wallet_amount = 500;
+
 // Use prompt-sync module to take input-output in node js.
 
 const cart = ["kurta", "pajama", "jeans"]
@@ -52,3 +54,27 @@ pr.then(function (orderId){
     console.log("Your order has been placed succsessfully.. Order ID is ",orderId)
 })
 
+// Upto here, We have created the order with order ID in database and returned the orderID. Now we have to proceed to payment.
+
+// function for payment
+
+function proceedTopayment(orderID){
+    const pr = new Promise(function (resolve, reject){
+        function isAlphaNumeric(str) {
+            var code, i, len;
+          
+            for (i = 0, len = str.length; i < len; i++) {
+              code = str.charCodeAt(i);
+              if (!(code > 47 && code < 58) && // numeric (0-9)
+                  !(code > 64 && code < 91) && // upper alpha (A-Z)
+                  !(code > 96 && code < 123)) { // lower alpha (a-z)
+                return false;
+              }
+            }
+            return true;
+          };
+        if(isAlphaNumeric(orderID)){
+            resolve("Your order purchase is successful.. Thank you for shopping")
+        }
+    })
+}
