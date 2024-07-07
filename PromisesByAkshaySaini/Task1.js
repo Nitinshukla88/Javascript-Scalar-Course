@@ -4,8 +4,7 @@ const prompt = require('prompt-sync')({sigint: true});
 
 // Use prompt-sync module to take input-output in node js.
 
-const cart = []
-
+const cart = ["kurta", "pajama", "jeans"]
 const items_to_buy = {
     1: "Kurta",
     2: "Payjama",
@@ -36,7 +35,7 @@ while(shopping=='y'){
     }
 }
 
-const pr = function placeOrder(cart){
+function placeOrder(cart){
     const promise = new Promise(function(resolve, reject){
         if(cart.length==0){
             reject("Cart is empty....Please enter items to proceed furthur.")
@@ -47,6 +46,9 @@ const pr = function placeOrder(cart){
     });
     return promise;
 }
-pr.then((orderId)=>{
-    console.log(orderId)
+
+const pr = placeOrder(cart)
+pr.then(function (orderId){
+    console.log("Your order has been placed succsessfully.. Order ID is ",orderId)
 })
+
