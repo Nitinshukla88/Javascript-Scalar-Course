@@ -49,10 +49,7 @@ function placeOrder(cart){
     return promise;
 }
 
-const pr = placeOrder(cart)
-pr.then(function (orderId){
-    console.log("Your order has been placed succsessfully.. Order ID is ",orderId)
-})
+
 
 // Upto here, We have created the order with order ID in database and returned the orderID. Now we have to proceed to payment.
 
@@ -74,7 +71,33 @@ function proceedTopayment(orderID){
             return true;
           };
         if(isAlphaNumeric(orderID)){
-            resolve("Your order purchase is successful.. Thank you for shopping")
+            // console.log("Your order purchase is successful.. Thank you for shopping")
+            resolve("Yes")
+        }else{
+            reject("There is some technical error arises.. can't place your order at the moment")
+        }
+    })
+    return pr
+}
+
+function orderSummary(string){
+    const prr = new Promise(function (resolve, reject){
+        if(string == "Yes"){
+            
         }
     })
 }
+
+const pr = placeOrder(cart)
+pr.then(function (orderId){
+    console.log("Your order has logged succsessfully.. Order ID is ",orderId)
+    console.log("\n We are now processing your payment to move furthur...")
+    const p = proceedTopayment(orderId)
+    return p
+}).then(function(str){
+    if(str == "Yes"){
+        console.log("OK, your order now placed successfully.. Thank you for the shopping")
+    }
+    const p1 = orderSummary(str)
+    return p1
+})
