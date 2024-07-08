@@ -6,7 +6,7 @@ let wallet_amount = 500;
 
 // Use prompt-sync module to take input-output in node js.
 
-const cart = ["kurta", "pajama", "jeans"]
+const cart = []
 const items_to_buy = {
     1: "Kurta",
     2: "Payjama",
@@ -80,12 +80,34 @@ function proceedTopayment(orderID){
     return pr
 }
 
-function orderSummary(string){
+function orderSummary(cart, string){
     const prr = new Promise(function (resolve, reject){
         if(string == "Yes"){
-            
+            console.log("Here's your order summary\n")
+            let total_expenses =0
+            for(i=0;i<cart.length;i++){
+                console.log(`You have buyed ${cart[i]} for Rs. 10\n`)
+                total_expenses+=10
+            }
+            console.log(`Total expenses are Rs. ${total_expenses}\n`)
+            resolve(total_expenses)
+        }else{
+            reject("Order summary can't be generated since order is unsuccessful\n")
         }
     })
+    return prr
+}
+
+function show_Wallet_amount(wallet_amount, expenses){
+    const newpr = new Promise(function (resolve , reject){
+        if(expenses){
+            console.log(`Your current wallet balance is ${wallet_amount-expenses}\n`)
+            resolve()
+        }else{
+            reject()
+        }
+    })
+    return newpr
 }
 
 const pr = placeOrder(cart)
@@ -98,6 +120,8 @@ pr.then(function (orderId){
     if(str == "Yes"){
         console.log("OK, your order now placed successfully.. Thank you for the shopping")
     }
-    const p1 = orderSummary(str)
+    const p1 = orderSummary(cart, str)
     return p1
+}).then(function (expenses){
+    const new_pr = show_Wallet_amount(wallet_amount,expenses)
 })
