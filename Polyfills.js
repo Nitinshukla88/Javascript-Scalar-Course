@@ -7,8 +7,8 @@ let obj1 = {
     secondname: "Shukla",
 };
 
-function printname(gender, city){
-    console.log(this.firstname + " " + this.secondname + " is a "+ gender + " and live in "+ city);
+function printname(gender, city, proff){
+    console.log(this.firstname + " " + this.secondname + " is a "+ gender + " and live in "+ city+ " and he is "+ proff);
 }
 
 // printname.call(obj1);// standard call function........................
@@ -45,3 +45,13 @@ function printname(gender, city){
 
 // Our polyfill for bind- mybind
 
+Function.prototype.mybind = function (obj1, ...args){
+    obj1.print = this;
+    return function(...args2){
+        obj1.print(...args, ...args2);
+    }
+}
+
+let myfunc = printname.mybind(obj1, "boy", "kanpur");
+
+myfunc("Engineer");
